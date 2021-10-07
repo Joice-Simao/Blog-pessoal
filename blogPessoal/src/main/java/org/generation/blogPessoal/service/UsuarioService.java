@@ -18,7 +18,7 @@ public class UsuarioService {
 	
 	public Usuario CadastrarUsuario(Usuario usuario) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		
+		//encripta a senha 
 		String senhaEncoder = encoder.encode(usuario.getSenha());
 		usuario.setSenha(senhaEncoder);
 		
@@ -28,11 +28,13 @@ public class UsuarioService {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		Optional<Usuario> usuario = repository.findByUsuario(user.get().getUsuario());
 		
+		//comparacao senhas
 		if (usuario.isPresent()) {
 			if (encoder.matches(user.get().getSenha(),usuario.get().getSenha())) {
-				String auth = user.get().getSenha()+":"+user.get().getSenha();
-				byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));
-				String authHeader = "Basic" +new String (encodedAuth);
+				
+				String auth = user.get().getUsuario()+":"+ user.get().getSenha();
+				byte[] encodedAuth = Base64.encodeBase64(auth.getBytes(Charset.forName("US-ASCII")));				
+				String authHeader = "Basic" + new String (encodedAuth);
 				
 				user.get().setToken(authHeader);
 				user.get().setNome(usuario.get().getNome());
@@ -40,6 +42,7 @@ public class UsuarioService {
 				return user;
 			}
 		}
+		//retorna nulo se o usuario nao for cadastrado
 		return null;
 	}
 }

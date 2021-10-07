@@ -16,17 +16,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 //habilitar web security
 public class BasicSecurityConfig extends WebSecurityConfigurerAdapter{
 	
-	@Autowired//injetar dependencia, um objeto da classe 
+	@Autowired//injecao de dependencia, um objeto da classe 
 	private UserDetailsService userDetailsService;
 	
 	@Override
-	// responsavel por fazer login
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+	//responsavel por fazer login
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception{ 
 		auth.userDetailsService(userDetailsService);
 	}
 	
 	@Bean
-	// metodo pode ser aplicado em qlqr classe 
+	//metodo pode ser aplicado em qlqr classe 
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
@@ -40,6 +40,6 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter{
 		.and().httpBasic()//tipo de autenticacao
 		.and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and().cors()// eh o CrossOrigin
-		.and().csrf().disable();
+		.and().csrf().disable();//desabilitar 
 	}
 }

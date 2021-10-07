@@ -13,6 +13,8 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "tb_usuario")
 public class Usuario {
+	
+	//atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -29,6 +31,8 @@ public class Usuario {
 	@Size(min = 5, max = 100)
 	private String senha;
 
+	
+	//getters setters
 	public long getId() {
 		return id;
 	}

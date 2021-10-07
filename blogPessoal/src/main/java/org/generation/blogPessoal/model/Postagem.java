@@ -34,10 +34,16 @@ public class Postagem {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data = new java.sql.Date(System.currentTimeMillis());
 
+	//relacionamentos 
 	@ManyToOne
-	public Tema tema;
-	@JsonIgnoreProperties("postagem")
+	@JsonIgnoreProperties("postagem")//json evita recursividade opcao({"postagem","usuario"})
+	private Tema tema;
 	
+//	@ManyToOne
+//	@JsonIgnoreProperties({"postagem","tema"})
+//	private Usuario usuario;
+	
+	//getters setters
 	public long getId() {
 		return id;
 	}

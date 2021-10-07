@@ -24,10 +24,12 @@ public class Tema {
 	@NotNull
 	private String descricao;
 	
+	//relacionamento
 	@OneToMany(mappedBy = "tema", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("tema")
 	private List <Postagem> postagem;
 
+	//getters setters
 	public long getId() {
 		return id;
 	}
