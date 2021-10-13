@@ -10,6 +10,5 @@ import org.springframework.stereotype.Repository;
 public interface PostagemRepository extends JpaRepository<Postagem, Long>{
 	
 	 //essa method Query eh equivalente a: select * from tb_postagem  where titulo like %titulo%
-
 	public List<Postagem> findAllByTituloContainingIgnoreCase (String titulo);
 }

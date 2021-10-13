@@ -5,9 +5,9 @@ import java.util.Collection;
 import org.generation.blogPessoal.model.Usuario;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Service;
+//import org.springframework.stereotype.Service;
 
-@Service
+//@Service
 public class UserDetailsImpl implements UserDetails{
 	
 	private static final long serialVersionUID = 1L;
@@ -19,6 +19,7 @@ public class UserDetailsImpl implements UserDetails{
 		this.userName = user.getUsuario();
 		this.password = user.getSenha();
 	}
+	
 	//construtor vazio
 	public UserDetailsImpl() {}
 

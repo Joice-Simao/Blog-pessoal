@@ -26,7 +26,6 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter{
 	}
 	
 	@Bean
-	//metodo pode ser aplicado em qlqr classe 
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}

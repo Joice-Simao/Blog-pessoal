@@ -17,45 +17,68 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/*
+ * @RestController - identifica a classe controller 
+ * @RequestMapping - caminho URI
+ * @CrossOrigin - compartilhar recursos de diferentes origens 
+ */
 @RestController
 @RequestMapping("/postagens")
 @CrossOrigin("*")
 public class PostagemController {
-	
+
+	// @Autowired - injecao de dependencias
 	@Autowired
 	private PostagemRepository repository;
-	// expressao lambda em java tem sintaxe (argumento) -> (corpo)
+
+	/*
+	 * @GetMapping - atalho para @RequestMapping METODO - retorna Lista do tipo
+	 * Postagem de TODAS postagens
+	 */
 	@GetMapping
-	public ResponseEntity<List<Postagem>> GetAll(){
-		return ResponseEntity.ok(repository.findAll());// 200 ok
+	public ResponseEntity<List<Postagem>> GetAll() {
+		return ResponseEntity.ok(repository.findAll());
 	}
-	//find por ID
+
+	/*
+	 * METODO - retorna Lista do tipo Postagem pelo ID
+	 */
 	@GetMapping("/{id}")
-	public ResponseEntity<Postagem> GetById(@PathVariable long id){
-		return repository.findById(id)
-				.map(resp -> ResponseEntity.ok(resp))
-				.orElse(ResponseEntity.notFound().build());
+	public ResponseEntity<Postagem> GetById(@PathVariable long id) {
+		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
-	//find pelo titulo 
-	//pra nao confundir a rota repetimos titulo 2x
+
+	/*
+	 * METODO - retorna Lista do tipo Postagem pelo Titulo /titulo/{titulo}
+	 * repetimos para nao duplicar o end point
+	 */
 	@GetMapping("/titulo/{titulo}")
-	public ResponseEntity<List<Postagem>> GetByTitulo(@PathVariable String titulo){
+	public ResponseEntity<List<Postagem>> GetByTitulo(@PathVariable String titulo) {
 		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
-	}	
-	//inserir dado
-	@PostMapping 
-	public ResponseEntity<Postagem> post (@RequestBody Postagem postagem){
+	}
+
+	/*
+	 * @PostMapping cria recurso
+	 */
+	@PostMapping
+	public ResponseEntity<Postagem> post(@RequestBody Postagem postagem) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(postagem));
 	}
-	//atualizar dados return o q foi salvo
-	@PutMapping 
-	public ResponseEntity<Postagem> put (@RequestBody Postagem postagem){
+
+	/*
+	 * @PutMapping atualiza recurso, incluir id no body do postman
+	 */
+	@PutMapping
+	public ResponseEntity<Postagem> put(@RequestBody Postagem postagem) {
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(postagem));
 	}
-	//deletar dados deletando pelo id 
+
+	/*
+	 * @DeleteMapping deleta recurso pelo id
+	 */
 	@DeleteMapping("/{id}")
-	public void delete (@PathVariable long id) {
+	public void delete(@PathVariable long id) {
 		repository.deleteById(id);
 	}
-	
+
 }
