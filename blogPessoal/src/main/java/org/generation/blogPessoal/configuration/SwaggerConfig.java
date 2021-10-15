@@ -30,12 +30,12 @@ public class SwaggerConfig {
 
 	public static ApiInfo metadata() {
 		return new ApiInfoBuilder().title("API - Blog Pessoal").description("Projeto API Spring - Blog Pessoal")
-				.version("1.0.0").license("Apache License Version 2.0").licenseUrl("https://github.com/rafaelq80")
+				.version("1.0.0").license("Apache License Version 2.0").licenseUrl("https://github.com/Joice-Simao")
 				.contact(contact()).build();
 	}
 
 	private static Contact contact() {
-		return new Contact("Rafael Queiróz", "https://github.com/rafaelq80", "rafaelproinfo@gmail.com");
+		return new Contact("Joice Simão", "https://github.com/Joice-Simao", "joice.simao@hotmail.com");
 	}
 
 	private static List<Response> responseMessage() {
