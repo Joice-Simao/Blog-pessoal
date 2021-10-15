@@ -38,10 +38,10 @@ public class UsuarioControllerTest {
 	@BeforeAll
 	public void start(){
 	
-			LocalDate dataAdmin = LocalDate.parse("1990-07-22",
-			DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+//			LocalDate dataAdmin = LocalDate.parse("1990-07-22",
+//			DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 			usuarioAdmin = new Usuario(0L, "Administrador",
-			"admin@email.com.br", "admin123", dataAdmin);
+			"admin@email.com.br", "admin123");//, dataAdmin
 			
 			if(!usuarioRepository.findByUsuario(usuarioAdmin.getUsuario()).isPresent()) {
 				
@@ -50,15 +50,15 @@ public class UsuarioControllerTest {
 				.exchange("/usuarios/cadastrar", HttpMethod.POST, request, Usuario.class);
 			}
 
-			LocalDate dataPost = LocalDate.parse("2000-07-22",
-			DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-			usuario=new Usuario(0L,"Paulo Antunes",
-			"paulo@email.com.br","13465278",dataPost);
-
-			LocalDate dataPut = LocalDate.parse("2000-07-22",
-			DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-			usuarioUpdate=new Usuario(2L,"Paulo Antunes de Souza",
-			"paulo_souza@email.com.br","souza123",dataPut);
+//			LocalDate dataPost = LocalDate.parse("2000-07-22",
+//			DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+//			usuario=new Usuario(0L,"Paulo Antunes",
+//			"paulo@email.com.br","13465278",dataPost); 
+//			
+//			LocalDate dataPut = LocalDate.parse("2000-07-22",
+//			DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+//			usuarioUpdate=new Usuario(2L,"Paulo Antunes de Souza",
+//			"paulo_souza@email.com.br","souza123",dataPut);
 	}
 
 	@Test

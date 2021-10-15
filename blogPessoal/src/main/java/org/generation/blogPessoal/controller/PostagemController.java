@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/postagens")
-@CrossOrigin("*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class PostagemController {
 
 	// @Autowired - injecao de dependencias
@@ -36,7 +36,7 @@ public class PostagemController {
 	 * Postagem de TODAS postagens
 	 */
 	@GetMapping
-	public ResponseEntity<List<Postagem>> GetAll() {
+	public ResponseEntity<List<Postagem>> getAll() {
 		return ResponseEntity.ok(repository.findAll());
 	}
 
@@ -44,8 +44,10 @@ public class PostagemController {
 	 * METODO - retorna Lista do tipo Postagem pelo ID
 	 */
 	@GetMapping("/{id}")
-	public ResponseEntity<Postagem> GetById(@PathVariable long id) {
-		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
+	public ResponseEntity<Postagem> getById(@PathVariable long id) {
+		return repository.findById(id)
+			.map(resp -> ResponseEntity.ok(resp))
+				.orElse(ResponseEntity.notFound().build());
 	}
 
 	/*
@@ -53,7 +55,7 @@ public class PostagemController {
 	 * repetimos para nao duplicar o end point
 	 */
 	@GetMapping("/titulo/{titulo}")
-	public ResponseEntity<List<Postagem>> GetByTitulo(@PathVariable String titulo) {
+	public ResponseEntity<List<Postagem>> getByTitulo(@PathVariable String titulo) {
 		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
 	}
 

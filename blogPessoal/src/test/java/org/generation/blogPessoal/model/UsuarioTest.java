@@ -27,8 +27,8 @@ public class UsuarioTest {
 
 	@BeforeEach
 	public void start() {
-		LocalDate data = LocalDate.parse("2000-07-22", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-		usuario = new Usuario(0L, "João da Silva", "joao@email.com.br", "13465278", data);
+		//LocalDate data = LocalDate.parse("2000-07-22", DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		usuario = new Usuario(0L, "João da Silva", "joao@email.com.br", "13465278");//, data
 	}
 
 	@Test
