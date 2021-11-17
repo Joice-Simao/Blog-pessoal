@@ -1,9 +1,9 @@
 package org.generation.blogPessoal.controller;
 
-
 import java.util.List;
 import java.util.Optional;
 
+import org.generation.blogPessoal.model.Tema;
 import org.generation.blogPessoal.model.UserLogin;
 import org.generation.blogPessoal.model.Usuario;
 import org.generation.blogPessoal.repository.UsuarioRepository;
@@ -27,15 +27,17 @@ import org.springframework.web.bind.annotation.RestController;
 public class UsuarioController {
 
 	@Autowired
-    private UsuarioService usuarioService;
+	private UsuarioService usuarioService;
 	private UsuarioRepository repository;
 	
+	@GetMapping
+	public ResponseEntity<List<Usuario>> getall() {
+		return ResponseEntity.ok(repository.findAll());
+	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Usuario> getById(@PathVariable long id) {
-		return repository.findById(id)
-			.map(resp -> ResponseEntity.ok(resp))
-				.orElse(ResponseEntity.notFound().build());
+		return repository.findById(id).map(resp -> ResponseEntity.ok(resp)).orElse(ResponseEntity.notFound().build());
 	}
 
 	@GetMapping("/nome/{nome}")
@@ -43,21 +45,18 @@ public class UsuarioController {
 		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 	}
 
-	 @PostMapping("/logar")
-	    public ResponseEntity<UserLogin> authentication(@RequestBody Optional<UserLogin>user){
-	        return usuarioService.logar(user)
-	        	.map(resp -> ResponseEntity.ok(resp))
-	                .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
-	    }
-	    
-	    @PostMapping("/cadastrar")
-	    public ResponseEntity<Usuario> postUsuario(@RequestBody Usuario usuario){
-	        return ResponseEntity.status(HttpStatus.CREATED)
-	        	.body(usuarioService.cadastrarUsuario(usuario));	
-	        
-	    }
-	
-	
+	@PostMapping("/logar")
+	public ResponseEntity<UserLogin> authentication(@RequestBody Optional<UserLogin> user) {
+		return usuarioService.logar(user).map(resp -> ResponseEntity.ok(resp))
+				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+	}
+
+	@PostMapping("/cadastrar")
+	public ResponseEntity<Usuario> postUsuario(@RequestBody Usuario usuario) {
+		return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.cadastrarUsuario(usuario));
+
+	}
+
 	@PutMapping
 	public ResponseEntity<Usuario> put(@RequestBody Usuario usuario) {
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(usuario));
@@ -67,7 +66,5 @@ public class UsuarioController {
 	public void delete(@PathVariable long id) {
 		repository.deleteById(id);
 	}
-	
 
 }
-
