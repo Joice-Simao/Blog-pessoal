@@ -18,23 +18,21 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Table(name = "postagem")
 public class Postagem {
 
-	// atributos
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;// chave primaria
+	private long id;
 
-	@NotNull(message = "Titulo nao pode estar vazio")
-	@Size(min = 5, max = 100, message = "Minimo 5 caracteres, maximo 100 caracteres")
+	@NotNull(message = "Título não pode estar vazio.")
+	@Size(min = 5, max = 100, message = "Mínimo 5 caracteres e máximo 100.")
 	private String titulo;
 
-	@NotNull(message = "Texto nao pode estar vazio")
-	@Size(min = 10, max = 500, message = "Minimo 10 caracteres, maximo 500 caracteres")
+	@NotNull(message = "Texto não pode estar vazio.")
+	@Size(min = 10, max = 500, message = "Mínimo 10 caracteres máximo 500.")
 	private String texto;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date data = new java.sql.Date(System.currentTimeMillis());
 
-	//relacionamento
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
 	private Tema tema;
@@ -43,7 +41,6 @@ public class Postagem {
 	@JsonIgnoreProperties("postagem")
 	private Usuario usuario;
 
-	// getters setters
 	public long getId() {
 		return id;
 	}
