@@ -1,9 +1,7 @@
 package org.generation.blogPessoal.model;
 
 public class UserLogin {
-	//pra criar o token
-	
-	//atributos
+
 	private long id; 
 	
 	private String nome;
@@ -13,9 +11,7 @@ public class UserLogin {
 	private String senha;
 	
 	private String token;
-    
-	
-	//getters setters
+
 	public long getId() {
 		return id;
 	}

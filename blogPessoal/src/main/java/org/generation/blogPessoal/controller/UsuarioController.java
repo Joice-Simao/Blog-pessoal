@@ -1,6 +1,5 @@
 package org.generation.blogPessoal.controller;
 
-
 import java.util.Optional;
 
 import org.generation.blogPessoal.model.UserLogin;
@@ -36,6 +35,4 @@ public class UsuarioController {
         	.body(usuarioService.cadastrarUsuario(usuario));	
         
     }
-
 }
-

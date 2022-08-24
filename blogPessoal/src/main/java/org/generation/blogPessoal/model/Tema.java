@@ -14,32 +14,22 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/*
- * @Entity - model
- * @Table - tabela
- */
 @Entity
 @Table(name = "tb_tema")
 public class Tema {
-	/*
-	 * Id chave primaria
-	 */
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@NotNull(message = "Descricao nao pode estar vazia")
-	@Size(min = 5, max = 100, message = "Minimo 5 caracteres, maximo 100 caracteres")
+	@NotNull(message = "Campo descrição não pode estar vazio.")
+	@Size(min = 5, max = 100, message = "Mínimo 5 caracteres e máximo 100.")
 	private String descricao;
-	
-	/*
-	 * RELACIONAMENTO OneToMany um tema para muitas postagens 
-	 */
+
 	@OneToMany(mappedBy = "tema", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("tema")
 	private List <Postagem> postagem;
 
-	//getters setters
 	public long getId() {
 		return id;
 	}

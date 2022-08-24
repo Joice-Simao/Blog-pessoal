@@ -1,6 +1,5 @@
 package org.generation.blogPessoal.seguranca;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -14,17 +13,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @EnableWebSecurity
-//habilitar web security
 public class BasicSecurityConfig extends WebSecurityConfigurerAdapter{
 	
-	@Autowired//injecao de dependencia, um objeto da classe 
+	@Autowired
 	private UserDetailsService userDetailsService;
-	
-	
-	//responsavel por fazer login
+
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth)
-	throws Exception {
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 	auth.userDetailsService(userDetailsService);
 	auth.inMemoryAuthentication()
 	.withUser("root")
@@ -37,7 +32,7 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter{
 		return new BCryptPasswordEncoder();
 	}
 	
-	@Override//sobrecarga de metodo
+	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 		.antMatchers("/usuarios/cadastrar").permitAll()
@@ -49,6 +44,5 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter{
 		.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 		.and().cors()
 		.and().csrf().disable();
-		}
-
+	}
 }
