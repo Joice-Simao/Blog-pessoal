@@ -29,7 +29,7 @@
 	gravar
 	
 ### 🤝🏽Contribuição
-
+<p>Agradeço a Generation Brasil pela oportunidade</p>
 
 ### 👩🏽‍💻Autor
 ---
