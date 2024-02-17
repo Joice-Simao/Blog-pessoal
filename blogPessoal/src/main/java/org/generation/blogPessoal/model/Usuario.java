@@ -36,9 +36,9 @@ public class Usuario {
 	@Size(min = 5, max = 100, message = "Mínimo 5 caracteres e máximo 100.")
 	private String senha;	
 
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)// .REMOVE
 	@JsonIgnoreProperties("usuario")
-	private List<Postagem> postagem;
+	private List <Postagem> postagem;
 
 	public Usuario(long id, String nome, String usuario, String senha) {
 	
