@@ -19,12 +19,14 @@ blábláblá
 - MySQL
 	
 ### 🔷Funcionalidades
-- [ ] Criar postagem
-- [ ] Alterar postagem
-- [ ] Deletar postagem
-- [ ] Criar tema
-- [ ] Alterar tema
-- [ ] Deletar tema
+- [x] Cadastrar usuário
+- [x] Logar usuário
+- [x] Criar postagem
+- [x] Alterar postagem
+- [x] Deletar postagem
+- [x] Criar tema
+- [x] Alterar tema
+- [x] Deletar tema
 
 ### 🎬Demonstração
 	gravar
