@@ -1,10 +1,8 @@
-<h1 align="center">Blog Pessoal</h1>
-<h4 align="center">🚧  Em construção...  🚧</h4>
+<h1 align="center">Blog Pessoal Back End</h1>
 
 <p align="center">
  <a>Sobre</a> •
  <a href="#funcionalidades">Funcionalidades</a> •
- <a>Demonstração</a> • 
  <a href="#tecnologias">Tecnologias</a> • 
  <a href="#contribuição">Contribuição</a> • 
  <a href="#autor">Autor</a>
@@ -27,9 +25,6 @@ Esta é uma aplicação de blog pessoal que permite aos usuários criar e compar
 - [x] Criar tema
 - [x] Alterar tema
 - [x] Deletar tema
-
-### 🎬Demonstração
-	gravar
 	
 ### 🤝🏽Contribuição
 <p>Agradeço a Generation Brasil pela oportunidade</p>
