@@ -11,7 +11,7 @@
 </p>
 
 ### 📃Sobre 
-blábláblá
+Esta é uma aplicação de blog pessoal que permite aos usuários criar e compartilhar suas próprias postagens. Com uma interface intuitiva e funcionalidades abrangentes, o Blog Pessoal é ideal para quem deseja expressar suas ideias, experiências e conhecimentos online.
 
 ### 🔧Tecnologias
 - Spring Boot
