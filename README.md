@@ -29,7 +29,7 @@ Esta é uma aplicação de blog pessoal que permite aos usuários criar e compar
 ### 🤝🏽Contribuição
 <p>Agradeço a Generation Brasil pela oportunidade</p>
 
-### 👩🏽‍💻Autor
+### 👩🏽‍💻Autora
 <img style="border-radius: 50%;" src="https://i.imgur.com/n7iVrD1.png" width="100px;" alt=""/>
  <b>Joice Simão🌱</b>
 <p>Entre em contato!</p>
